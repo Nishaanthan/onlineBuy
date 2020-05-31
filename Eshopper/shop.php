@@ -1,32 +1,40 @@
+<?php
+require('config.php');
+?>
+
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="">
-    <meta name="author" content="">
-    <title>Blog Single | OnlineBuy</title>
-    <link href="css/bootstrap.min.css" rel="stylesheet">
-    <link href="css/font-awesome.min.css" rel="stylesheet">
-    <link href="css/prettyPhoto.css" rel="stylesheet">
-    <link href="css/price-range.css" rel="stylesheet">
-    <link href="css/animate.css" rel="stylesheet">
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<meta name="description" content="">
+	<meta name="author" content="">
+	<title>Shop | OnlineBuy</title>
+	<link href="css/bootstrap.min.css" rel="stylesheet">
+	<link href="css/font-awesome.min.css" rel="stylesheet">
+	<link href="css/prettyPhoto.css" rel="stylesheet">
+	<link href="css/price-range.css" rel="stylesheet">
+	<link href="css/animate.css" rel="stylesheet">
 	<link href="css/main.css" rel="stylesheet">
 	<link href="css/responsive.css" rel="stylesheet">
-    <!--[if lt IE 9]>
+	<!--[if lt IE 9]>
     <script src="js/html5shiv.js"></script>
     <script src="js/respond.min.js"></script>
-    <![endif]-->       
-    <link rel="shortcut icon" href="images/ico/favicon.ico">
-    <link rel="apple-touch-icon-precomposed" sizes="144x144" href="images/ico/apple-touch-icon-144-precomposed.png">
-    <link rel="apple-touch-icon-precomposed" sizes="114x114" href="images/ico/apple-touch-icon-114-precomposed.png">
-    <link rel="apple-touch-icon-precomposed" sizes="72x72" href="images/ico/apple-touch-icon-72-precomposed.png">
-    <link rel="apple-touch-icon-precomposed" href="images/ico/apple-touch-icon-57-precomposed.png">
-</head><!--/head-->
+    <![endif]-->
+	<link rel="shortcut icon" href="images/ico/favicon.ico">
+	<link rel="apple-touch-icon-precomposed" sizes="144x144" href="images/ico/apple-touch-icon-144-precomposed.png">
+	<link rel="apple-touch-icon-precomposed" sizes="114x114" href="images/ico/apple-touch-icon-114-precomposed.png">
+	<link rel="apple-touch-icon-precomposed" sizes="72x72" href="images/ico/apple-touch-icon-72-precomposed.png">
+	<link rel="apple-touch-icon-precomposed" href="images/ico/apple-touch-icon-57-precomposed.png">
+</head>
+<!--/head-->
 
 <body>
-	<header id="header"><!--header-->
-		<div class="header-middle"><!--header-middle-->
+	<header id="header">
+		<!--header-->
+		<div class="header-middle">
+			<!--header-middle-->
 			<div class="container">
 				<div class="row">
 					<div class="col-sm-4">
@@ -40,16 +48,28 @@
 								<li><a href=""><i class="fa fa-user"></i> Account</a></li>
 								<li><a href=""><i class="fa fa-star"></i> Wishlist</a></li>
 								<li><a href="checkout.html"><i class="fa fa-crosshairs"></i> Checkout</a></li>
-								<li><a href="cart.php"><i class="fa fa-shopping-cart"></i> Cart</a></li>
-								<li><a href="login.php"><i class="fa fa-lock"></i> Login</a></li>
+								<li><a href="cart.php"><i id="cart_button" class="fa fa-shopping-cart"></i> Cart <span id="number">0</span></a></li>
+								<?php
+								if (isset($_SESSION['username'])) {
+								?>
+									<li><a href="logout.php"><i class="fa fa-lock"></i> Logout</a></li>
+								<?php
+								} else {
+								?>
+									<li><a href="login.php"><i class="fa fa-lock"></i> Login</a></li>
+								<?php
+								}
+								?>
 							</ul>
 						</div>
 					</div>
 				</div>
 			</div>
-		</div><!--/header-middle-->
-	
-		<div class="header-bottom"><!--header-bottom-->
+		</div>
+		<!--/header-middle-->
+
+		<div class="header-bottom">
+			<!--header-bottom-->
 			<div class="container">
 				<div class="row">
 					<div class="col-sm-9">
@@ -64,42 +84,49 @@
 						<div class="mainmenu pull-left">
 							<ul class="nav navbar-nav collapse navbar-collapse">
 								<li><a href="index.php">Home</a></li>
-								<li class="dropdown"><a href="#">Shop<i class="fa fa-angle-down"></i></a>
-                                    <ul role="menu" class="sub-menu">
-                                        <li><a href="shop.php">Products</a></li>
-										<li><a href="product-details.html">Product Details</a></li> 
-										<li><a href="checkout.html">Checkout</a></li> 
-										<li><a href="cart.php">Cart</a></li> 
+								<li class="dropdown"><a href="#" class="active">Shop<i class="fa fa-angle-down"></i></a>
+									<ul role="menu" class="sub-menu">
+										<li><a href="shop.php" class="active">Products</a></li>
+										<li><a href="product-details.html">Product Details</a></li>
+										<li><a href="checkout.html">Checkout</a></li>
+										<li><a href="cart.php">Cart</a></li>
 										<li><a href="login.php">Login</a></li>
-                                    </ul>
-                                </li> 
-								<li class="dropdown"><a href="#" class="active">Blog<i class="fa fa-angle-down"></i></a>
-                                    <ul role="menu" class="sub-menu">
-                                        <li><a href="blog.html">Blog List</a></li>
-										<li><a href="blog-single.html" class="active">Blog Single</a></li>
-                                    </ul>
-                                </li>
+									</ul>
+								</li>
+								<li class="dropdown"><a href="#">Blog<i class="fa fa-angle-down"></i></a>
+									<ul role="menu" class="sub-menu">
+										<li><a href="blog.html">Blog List</a></li>
+										<li><a href="blog-single.html">Blog Single</a></li>
+									</ul>
+								</li>
 								<li><a href="contact-us.html">Contact</a></li>
 							</ul>
 						</div>
 					</div>
 					<div class="col-sm-3">
 						<div class="search_box pull-right">
-							<input type="text" placeholder="Search"/>
+							<input type="text" placeholder="Search" />
 						</div>
 					</div>
 				</div>
 			</div>
-		</div><!--/header-bottom-->
-	</header><!--/header-->
-	
+		</div>
+	</header>
+
+	<section id="advertisement">
+		<div class="container">
+			<img src="images/shop/advertisement.jpg" alt="" />
+		</div>
+	</section>
+
 	<section>
 		<div class="container">
 			<div class="row">
 				<div class="col-sm-3">
 					<div class="left-sidebar">
 						<h2>Category</h2>
-						<div class="panel-group category-products" id="accordian"><!--category-productsr-->
+						<div class="panel-group category-products" id="accordian">
+							<!--category-productsr-->
 							<div class="panel panel-default">
 								<div class="panel-heading">
 									<h4 class="panel-title">
@@ -147,7 +174,6 @@
 									</div>
 								</div>
 							</div>
-							
 							<div class="panel panel-default">
 								<div class="panel-heading">
 									<h4 class="panel-title">
@@ -204,9 +230,10 @@
 									<h4 class="panel-title"><a href="#">Shoes</a></h4>
 								</div>
 							</div>
-						</div><!--/category-products-->
-					
-						<div class="brands_products"><!--brands_products-->
+						</div>
+						<!--/category-productsr-->
+						<div class="brands_products">
+							<!--brands_products-->
 							<h2>Brands</h2>
 							<div class="brands-name">
 								<ul class="nav nav-pills nav-stacked">
@@ -219,193 +246,85 @@
 									<li><a href=""> <span class="pull-right">(4)</span>Rösch creative culture</a></li>
 								</ul>
 							</div>
-						</div><!--/brands_products-->
-						
-						<div class="price-range"><!--price-range-->
+						</div>
+						<!--/brands_products-->
+						<div class="price-range">
+							<!--price-range-->
 							<h2>Price Range</h2>
 							<div class="well">
-								 <input type="text" class="span2" value="" data-slider-min="0" data-slider-max="6000" data-slider-step="5" data-slider-value="[250,450]" id="sl2" ><br />
-								 <b>Rs 0</b> <b class="pull-right">Rs 6000</b>
+								<input type="text" class="span2" value="" data-slider-min="0" data-slider-max="6000" data-slider-step="5" data-slider-value="[250,450]" id="sl2"><br />
+								<b>Rs 0</b> <b class="pull-right">Rs 6000</b>
 							</div>
-						</div><!--/price-range-->
-						
-						<div class="shipping text-center"><!--shipping-->
+						</div>
+						<!--/price-range-->
+						<div class="shipping text-center">
+							<!--shipping-->
 							<img src="images/home/shipping.jpg" alt="" />
-						</div><!--/shipping-->
+						</div>
+						<!--/shipping-->
+
 					</div>
 				</div>
-				<div class="col-sm-9">
-					<div class="blog-post-area">
-						<h2 class="title text-center">Latest From our Blog</h2>
-						<div class="single-blog-post">
-							<h3>Girls Pink T Shirt arrived in store</h3>
-							<div class="post-meta">
-								<ul>
-									<li><i class="fa fa-user"></i> Mac Doe</li>
-									<li><i class="fa fa-clock-o"></i> 1:33 pm</li>
-									<li><i class="fa fa-calendar"></i> DEC 5, 2019</li>
-								</ul>
-								<span>
-									<i class="fa fa-star"></i>
-									<i class="fa fa-star"></i>
-									<i class="fa fa-star"></i>
-									<i class="fa fa-star"></i>
-									<i class="fa fa-star-half-o"></i>
-								</span>
-							</div>
-							<a href="">
-								<img src="images/blog/blog-one.jpg" alt="">
-							</a>
-							<p>
-								Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.</p> <br>
 
-							<p>
-								Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo.</p> <br>
+				<div class="col-sm-9 padding-right">
+					<div class="features_items">
+						<!--features_items-->
+						<h2 class="title text-center">Features Items</h2>
 
-							<p>
-								Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia consequuntur magni dolores eos qui ratione voluptatem sequi nesciunt.</p> <br>
+						<?php
 
-							<p>
-								Neque porro quisquam est, qui dolorem ipsum quia dolor sit amet, consectetur, adipisci velit, sed quia non numquam eius modi tempora incidunt ut labore et dolore magnam aliquam quaerat voluptatem.
-							</p>
-							<div class="pager-area">
-								<ul class="pager pull-right">
-									<li><a href="#">Pre</a></li>
-									<li><a href="#">Next</a></li>
-								</ul>
-							</div>
-						</div>
-					</div><!--/blog-post-area-->
+						$sql = "SELECT * FROM featured";
+						$result = mysqli_query($conn, $sql);
 
-					<div class="rating-area">
-						<ul class="ratings">
-							<li class="rate-this">Rate this item:</li>
-							<li>
-								<i class="fa fa-star color"></i>
-								<i class="fa fa-star color"></i>
-								<i class="fa fa-star color"></i>
-								<i class="fa fa-star"></i>
-								<i class="fa fa-star"></i>
-							</li>
-							<li class="color">(6 votes)</li>
-						</ul>
-						<ul class="tag">
-							<li>TAG:</li>
-							<li><a class="color" href="">Pink <span>/</span></a></li>
-							<li><a class="color" href="">T-Shirt <span>/</span></a></li>
-							<li><a class="color" href="">Girls</a></li>
-						</ul>
-					</div><!--/rating-area-->
+						while ($row = mysqli_fetch_assoc($result)) {
+						?>
 
-					<div class="socials-share">
-						<a href=""><img src="images/blog/socials.png" alt=""></a>
-					</div><!--/socials-share-->
-
-					<div class="media commnets">
-						<a class="pull-left" href="#">
-							<img class="media-object" src="images/blog/man-one.jpg" alt="">
-						</a>
-						<div class="media-body">
-							<h4 class="media-heading">Annie Davis</h4>
-							<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.  Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
-							<div class="blog-socials">
-								<ul>
-									<li><a href=""><i class="fa fa-facebook"></i></a></li>
-									<li><a href=""><i class="fa fa-twitter"></i></a></li>
-									<li><a href=""><i class="fa fa-dribbble"></i></a></li>
-									<li><a href=""><i class="fa fa-google-plus"></i></a></li>
-								</ul>
-								<a class="btn btn-primary" href="">Other Posts</a>
-							</div>
-						</div>
-					</div><!--Comments-->
-					<div class="response-area">
-						<h2>3 RESPONSES</h2>
-						<ul class="media-list">
-							<li class="media">
-								
-								<a class="pull-left" href="#">
-									<img class="media-object" src="images/blog/man-two.jpg" alt="">
-								</a>
-								<div class="media-body">
-									<ul class="sinlge-post-meta">
-										<li><i class="fa fa-user"></i>Janis Gallagher</li>
-										<li><i class="fa fa-clock-o"></i> 1:33 pm</li>
-										<li><i class="fa fa-calendar"></i> FEB 5, 2020</li>
-									</ul>
-									<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.  Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
-									<a class="btn btn-primary" href=""><i class="fa fa-reply"></i>Replay</a>
-								</div>
-							</li>
-							<li class="media second-media">
-								<a class="pull-left" href="#">
-									<img class="media-object" src="images/blog/man-three.jpg" alt="">
-								</a>
-								<div class="media-body">
-									<ul class="sinlge-post-meta">
-										<li><i class="fa fa-user"></i>Janis Gallagher</li>
-										<li><i class="fa fa-clock-o"></i> 1:33 pm</li>
-										<li><i class="fa fa-calendar"></i> MAR 5, 2020</li>
-									</ul>
-									<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.  Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
-									<a class="btn btn-primary" href=""><i class="fa fa-reply"></i>Replay</a>
-								</div>
-							</li>
-							<li class="media">
-								<a class="pull-left" href="#">
-									<img class="media-object" src="images/blog/man-four.jpg" alt="">
-								</a>
-								<div class="media-body">
-									<ul class="sinlge-post-meta">
-										<li><i class="fa fa-user"></i>Janis Gallagher</li>
-										<li><i class="fa fa-clock-o"></i> 1:33 pm</li>
-										<li><i class="fa fa-calendar"></i> MRC 5, 2020</li>
-									</ul>
-									<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.  Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
-									<a class="btn btn-primary" href=""><i class="fa fa-reply"></i>Replay</a>
-								</div>
-							</li>
-						</ul>					
-					</div><!--/Response-area-->
-					<div class="replay-box">
-						<div class="row">
 							<div class="col-sm-4">
-								<h2>Leave a replay</h2>
-								<form>
-									<div class="blank-arrow">
-										<label>Your Name</label>
+								<form action="cart.php" method="post">
+									<div class="product-image-wrapper">
+										<div class="single-products">
+											<div class="productinfo text-center">
+												<img class="cart-item-image" src="images/home/<?php echo $row['image'] ?>" alt="" />
+												<h2 class="price">Rs <?php echo $row['price'] ?></h2>
+												<p class="cart-item-title"><?php echo $row['name'] ?></p>
+												<input type="hidden" name="id" value="<?php echo $row['id'] ?>" />
+												<button type="submit" class="btn btn-default add-to-cart"><i class="fa fa-shopping-cart"></i>Add to cart</button>
+											</div>
+											<div class="product-overlay">
+												<div class="overlay-content">
+													<h2 class="price"><?php echo $row['price'] ?></h2>
+													<p class="cart-item-title"><?php echo $row['name'] ?></p>
+													<button type="submit" class="btn btn-default add-to-cart"><i class="fa fa-shopping-cart"></i>Add to cart</button>
+												</div>
+											</div>
+										</div>
+										<div class="choose">
+											<ul class="nav nav-pills nav-justified">
+												<li><a href=""><i class="fa fa-plus-square"></i>Add to wishlist</a></li>
+												<li><a href=""><i class="fa fa-plus-square"></i>Add to compare</a></li>
+											</ul>
+										</div>
 									</div>
-									<span>*</span>
-									<input type="text" placeholder="write your name...">
-									<div class="blank-arrow">
-										<label>Email Address</label>
-									</div>
-									<span>*</span>
-									<input type="email" placeholder="your email address...">
-									<div class="blank-arrow">
-										<label>Web Site</label>
-									</div>
-									<input type="email" placeholder="current city...">
 								</form>
 							</div>
-							<div class="col-sm-8">
-								<div class="text-area">
-									<div class="blank-arrow">
-										<label>Your Name</label>
-									</div>
-									<span>*</span>
-									<textarea name="message" rows="11"></textarea>
-									<a class="btn btn-primary" href="">post comment</a>
-								</div>
-							</div>
-						</div>
-					</div><!--/Repaly Box-->
-				</div>	
+
+						<?php } ?>
+
+						<ul class="pagination">
+							<li class="active"><a href="">1</a></li>
+							<li><a href="">2</a></li>
+							<li><a href="">3</a></li>
+							<li><a href="">&raquo;</a></li>
+						</ul>
+					</div>
+					<!--features_items-->
+				</div>
 			</div>
 		</div>
 	</section>
 
-	<footer id="footer"><!--Footer-->
+	<footer id="footer">
+		<!--Footer-->
 		<div class="footer-top">
 			<div class="container">
 				<div class="row">
@@ -542,7 +461,8 @@
 							<h2>About Shopper</h2>
 							<form action="#" class="searchform">
 								<input type="text" placeholder="Your email address" />
-								<button type="submit" class="btn btn-default"><i class="fa fa-arrow-circle-o-right"></i></button>
+								<button type="submit" class="btn btn-default"><i class="fa fa-arrow-circle-o-right"></i>
+								</button>
 								<p>Get the most recent updates from <br />our site and be updated your self...</p>
 							</form>
 						</div>
@@ -561,15 +481,19 @@
 			</div>
 		</div>
 
-	</footer><!--/Footer-->
-	
+	</footer>
+	<!--/Footer-->
 
-  
-    <script src="js/jquery.js"></script>
+
+
+	<script src="js/jquery.js"></script>
 	<script src="js/price-range.js"></script>
 	<script src="js/jquery.scrollUp.min.js"></script>
 	<script src="js/bootstrap.min.js"></script>
-    <script src="js/jquery.prettyPhoto.js"></script>
-    <script src="js/main.js"></script>
+	<script src="js/jquery.prettyPhoto.js"></script>
+	<script src="js/main.js"></script>
+	<script src="js/addChart.js"></script>
+	<script src="js/mainCart.js"></script>
 </body>
+
 </html>
